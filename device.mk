@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-LOCAL_PATH := device/tecno/TECNO-KJ5
+LOCAL_PATH := device/tecno/KJ5
 
 # Dynamic
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
