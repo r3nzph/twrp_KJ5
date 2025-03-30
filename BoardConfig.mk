@@ -105,6 +105,9 @@ BOARD_SUPER_PARTITION_GROUPS := tecno_dynamic_partitions
 BOARD_TECNO_DYNAMIC_PARTITIONS_PARTITION_LIST := system system system_ext vendor product tr_mi tr_mi tr_theme tr_theme tr_region tr_region tr_company tr_company tr_carrier tr_carrier tr_product tr_product tr_preload tr_preload
 BOARD_TECNO_DYNAMIC_PARTITIONS_SIZE := 9122611200 # TODO: Fix hardcoded value
 
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
+
 # Platform
 TARGET_BOARD_PLATFORM := mt6768
 
@@ -215,11 +218,6 @@ TW_INCLUDE_FUSE_NTFS  := true
 
 # Props
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
-
-# Crypto
-TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_CRYPTO_FBE := true
-TW_PREPARE_DATA_MEDIA_EARLY := true
 
 # Libresetprop & resetprop
 TW_INCLUDE_LIBRESETPROP := true
