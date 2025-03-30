@@ -1,0 +1,7 @@
+# .github/dependabot.yml
+version: 2
+updates:
+  - package-ecosystem: "github-actions" # This specifies that you want to update GitHub Actions.
+    directory: ".github/workflows"                      # The directory where your workflow files are located.
+    schedule:
+      interval: "monthly"
