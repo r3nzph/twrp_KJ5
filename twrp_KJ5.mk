@@ -13,7 +13,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
 # Inherit from our custom product configuration.
-$(call inherit-product, vendor/twrp/config/common.mk
+$(call inherit-product, vendor/twrp/config/common.mk)
 
 # Inherit from KJ5 device
 $(call inherit-product, device/tecno/KJ5/device.mk)
