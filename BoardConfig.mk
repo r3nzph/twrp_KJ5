@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/tecno/TECNO-KJ5
+DEVICE_PATH := device/tecno/KJ5
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
@@ -20,7 +20,6 @@ AB_OTA_PARTITIONS += \
     system_ext \
     vendor \
     product
-BOARD_USES_RECOVERY_AS_BOOT := true
 
 # Architecture
 TARGET_ARCH := arm64
@@ -41,7 +40,7 @@ TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a53
 OVERRIDE_TARGET_FLATTEN_APEX := true
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := TECNO-KJ5
+TARGET_BOOTLOADER_BOARD_NAME := KJ5
 TARGET_NO_BOOTLOADER := true
 
 # Display
