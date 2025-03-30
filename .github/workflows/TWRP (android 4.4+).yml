@@ -1,0 +1,189 @@
+name: Recovery Build TWRP 4.4+ (Ubuntu 18.04)
+permissions:
+  contents: write
+on:
+  workflow_dispatch:
+    inputs:
+      MANIFEST_URL:
+        description: 'MANIFEST_URL, Works below android 10 with this repo (if want to use SSH keys, use git@github.com:XXXXX)'
+        required: true
+        default: 'https://github.com/mlm-games/platform_manifest_twrp_omni'
+      MANIFEST_BRANCH:
+        description: 'MANIFEST_BRANCH'
+        required: true
+        default: 'twrp-5.1'
+      DEVICE_TREE_URL:
+        description: 'DEVICE_TREE_URL'
+        required: true
+        default: 'https://github.com/zh-xijun/twrp_device_'
+      DEVICE_TREE_BRANCH:
+        description: 'DEVICE_TREE_BRANCH'
+        required: true
+        default: 'twrp-4.4'
+      DEVICE_PATH:
+        description: 'DEVICE_PATH'
+        required: true
+        default: 'device/'
+      DEVICE_NAME:
+        description: 'DEVICE_NAME'
+        required: true
+        default: ''
+      MAKEFILE_NAME:
+        description: 'MAKEFILE_NAME (without including .mk, Example: omni_7304F)'
+        required: true
+        default: 'omni_'
+      LDCHECK:
+        description: 'Use LDCHECK' # I can use only 10 inputs on a workflow file
+        required: false
+        default: 'false'
+        type: boolean
+      LDCHECKPATH:
+        description: 'Path of blobs to check' # Use it know what kind of dependencies your missing for decryption blobs.
+        required: true
+        default: 'system/bin/qseecomd'
+#      COMMON_TREE_URL:
+#        description: 'COMMON_TREE_URL (if no common tree, leave blank)'
+#        required: false
+#      COMMON_PATH:
+#        description: 'COMMON_PATH (if no common tree, leave blank)'
+#        required: false
+
+jobs:
+  build:
+    if: github.event.repository.owner.id == github.event.sender.id
+    runs-on: ubuntu-22.04
+    container:
+      image: ghcr.io/catthehacker/ubuntu:runner-18.04
+    env:
+      LC_ALL: "C.UTF-8"
+      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
+      OUTPUT_DIR: android-recovery/out/target/product
+    steps:
+    - name: Display Run Parameters
+      run: |
+        echo "::group::User Environment Variables"
+        echo "Manifest URL: ${{ inputs.MANIFEST_URL }}"
+        echo "Manifest Branch: ${{ inputs.MANIFEST_BRANCH }}"
+        echo "Device Tree URL: ${{ inputs.DEVICE_TREE_URL }}"
+        echo "Device Tree Branch: ${{ inputs.DEVICE_TREE_BRANCH }}"
+        echo "Device Path: ${{ inputs.DEVICE_PATH }}"
+        echo "Device Name: ${{ inputs.DEVICE_NAME }}"
+        echo "Makefile Name: ${{ inputs.MAKEFILE_NAME }}"
+        echo "::endgroup::"
+ 
+    - name: Check Out
+      uses: actions/checkout@v4
+
+    # Cleanup The Actions Workspace Using Custom Composite Run Actions
+    - name: Cleanup
+      uses: rokibhasansagar/slimhub_actions@main
+      # That's it! Now use your normal steps
+
+    - name: Prepare the environment
+      run: |
+        sudo apt update
+        sudo apt -y upgrade
+        sudo apt install -yq bc bison build-essential curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev python bash tmux
+
+    - name: Install OpenJDK
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'zulu'
+        java-version: '8'
+
+    - name: Setup SSH Keys
+      if: ${{ startsWith(github.event.inputs.MANIFEST_URL, 'git@github.com') }}
+      uses: webfactory/ssh-agent@v0.9.0
+      with:
+          ssh-private-key: |
+              ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Install repo
+      run: |
+        sudo ln -sf /usr/bin/python3 /usr/bin/python
+        mkdir ~/bin
+        curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+        chmod a+x ~/bin/repo
+        sudo ln -sf ~/bin/repo /usr/bin/repo
+      
+    - name: Initialize repo
+      run: |
+        mkdir android-recovery
+        cd android-recovery
+        echo "android-recovery-folder=$(pwd)" >> $GITHUB_OUTPUT
+        git config --global user.name "${{ github.actor }}"
+        git config --global user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
+        repo init --depth=1 -u ${{ inputs.MANIFEST_URL }} -b ${{ inputs.MANIFEST_BRANCH }}
+      id: pwd
+          
+    - name: Repo Sync
+      run: |
+        repo sync -j$(nproc --all) --force-sync
+      working-directory: android-recovery
+      
+    - name: Clone device tree
+      run: |
+        git clone ${{ inputs.DEVICE_TREE_URL }} -b ${{ inputs.DEVICE_TREE_BRANCH }} ./${{ inputs.DEVICE_PATH }}
+      working-directory: ${{ steps.pwd.outputs.android-recovery-folder }}
+
+#    - name: Clone common tree
+#      if: |
+#        inputs.COMMON_TREE_URL != null
+#        && inputs.COMMON_PATH != null
+#      run: |
+#        git clone ${{ inputs.COMMON_TREE_URL }} -b ${{ inputs.DEVICE_TREE_BRANCH }} ./${{ inputs.COMMON_PATH }}
+#      working-directory: ${{ steps.pwd.outputs.android-recovery-folder }}
+
+    - name: Sync Device Dependencies
+      run: |
+        bash ${GITHUB_WORKSPACE}/scripts/convert.sh ${{ inputs.DEVICE_PATH }}/${{ steps.buildtree.outputs.value }}.dependencies
+        repo sync -j$(nproc --all)
+      working-directory: ${{ steps.pwd.outputs.android-recovery-folder }}
+      continue-on-error: true
+
+#    - name: Set Swap Space
+#      uses: pierotofy/set-swap-space@master
+#      with:
+#        swap-size-gb: 12
+
+    - name: Switch to Python2
+      run: |
+        sudo rm -f /usr/bin/python /usr/bin/python3.6 /usr/bin/python3.6m /usr/local/bin/python
+        sudo ln -sf /usr/bin/python2.7 /usr/bin/python
+      continue-on-error: true
+    
+    - name: Building recovery
+      shell: bash
+      run: |
+        source build/envsetup.sh
+        export ALLOW_MISSING_DEPENDENCIES=true
+        lunch ${{ inputs.MAKEFILE_NAME }}-eng && make clean && make recoveryimage -j$(nproc --all)
+      working-directory: ${{ steps.pwd.outputs.android-recovery-folder }}
+
+    - name: Upload to Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: | 
+          ${{ env.OUTPUT_DIR}}/${{ inputs.DEVICE_NAME }}/recovery.img
+          ${{ env.OUTPUT_DIR}}/${{ inputs.DEVICE_NAME }}/*.zip
+          ${{ env.OUTPUT_DIR}}/${{ inputs.DEVICE_NAME }}/*vendor*.img
+        name: ${{ inputs.DEVICE_NAME }}-${{ github.run_id }}
+        tag_name: ${{ github.run_id }}
+        body: |
+          Manifest: ${{ inputs.MANIFEST_BRANCH }}
+          Device: ${{ inputs.DEVICE_NAME }}
+          Device tree & Branch: ${{ inputs.DEVICE_TREE_URL }} - ${{ inputs.DEVICE_TREE_BRANCH }}
+        prerelease: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Run LDCheck
+      if: inputs.LDCHECK == true
+      run: |
+        cd tools
+        mv -n libneeds ${GITHUB_WORKSPACE}/${{ env.OUTPUT_DIR }}/${{ inputs.DEVICE_NAME }}/recovery/root/
+        mv -n ldcheck ${GITHUB_WORKSPACE}/${{ env.OUTPUT_DIR }}/${{ inputs.DEVICE_NAME }}/recovery/root/
+        cd ${GITHUB_WORKSPACE}/${{ env.OUTPUT_DIR }}/${{ inputs.DEVICE_NAME }}/recovery/root
+        python3 ldcheck -p system/lib64:vendor/lib64:system/lib:vendor/lib -d ${{ inputs.LDCHECKPATH }}
+        echo "Done checking missing dependencies. Review, and reconfigure your tree."
+      continue-on-error: true
