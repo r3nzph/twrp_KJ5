@@ -6,9 +6,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/omni_TECNO-KJ5.mk
+    $(LOCAL_DIR)/twrp_KJ5.mk
 
 COMMON_LUNCH_CHOICES := \
-    omni_TECNO-KJ5-user \
-    omni_TECNO-KJ5-userdebug \
-    omni_TECNO-KJ5-eng
+    twrp_KJ5-user \
+    twrp_KJ5-userdebug \
+    twrp_KJ5-eng
