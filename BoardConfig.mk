@@ -102,7 +102,7 @@ TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_SYSTEM := system
 BOARD_SUPER_PARTITION_SIZE := 9126805504 # TODO: Fix hardcoded value
 BOARD_SUPER_PARTITION_GROUPS := tecno_dynamic_partitions
-BOARD_TECNO_DYNAMIC_PARTITIONS_PARTITION_LIST := system system system_ext vendor product tr_mi tr_mi tr_theme tr_theme tr_region tr_region tr_company tr_company tr_carrier tr_carrier tr_product tr_product tr_preload tr_preload
+BOARD_TECNO_DYNAMIC_PARTITIONS_PARTITION_LIST := system vendor product system_ext
 BOARD_TECNO_DYNAMIC_PARTITIONS_SIZE := 9122611200 # TODO: Fix hardcoded value
 
 TARGET_USERIMAGES_USE_EXT4 := true
