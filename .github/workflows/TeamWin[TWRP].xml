@@ -18,7 +18,7 @@ on:
       DEVICE_TREE_URL:
         description: Device Tree URL
         required: true
-        default: https://github.com/r3nzph/KJ5.git
+        default: https://github.com/r3nzph/twrp_KJ5.git
       DEVICE_TREE_BRANCH:
         description: Device Tree Branch
         required: true
@@ -43,7 +43,7 @@ on:
         - recovery
         - vendor_boot
         required: true
-        default: recovery
+        default: vendor_boot
       RECOVERY_INSTALLER:
         description: Include recovery installer zip
         type: boolean
