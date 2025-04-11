@@ -1,24 +1,6 @@
 # Device Path
 DEVICE_PATH := device/tecno/KJ5
 
-ENABLE_VIRTUAL_AB := true
-AB_OTA_UPDATER := true
-
-AB_OTA_PARTITIONS += \
-    boot \
-    dtbo \
-    lk \
-    odm \
-    odm_dlkm \
-    product \
-    system \
-    system_ext \
-    vbmeta_system \
-    vbmeta_vendor \
-    vendor \
-    vendor_boot \
-    vendor_dlkm
-
 # Architecture Settings
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
