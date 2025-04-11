@@ -1,34 +1,34 @@
-#
-# Copyright (C) 2025 The Android Open Source Project
-# Copyright (C) 2025 SebaUbuntu's TWRP device tree generator
-#
-# SPDX-License-Identifier: Apache-2.0
-#
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
-LOCAL_PATH := device/tecno/KJ5
+# Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
-# Dynamic
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
-
-# Virtual A/B
-ENABLE_VIRTUAL_AB := true
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
-
-# SDCard replacement functionality
+# Enable project quotas and casefolding for emulated storage without sdcardfs
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
+# Enable Virtual A/B OTA
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
+
+ENABLE_VIRTUAL_AB := true
 AB_OTA_UPDATER := true
-AB_OTA_PARTITIONS := \
+
+AB_OTA_PARTITIONS += \
     boot \
     dtbo \
+    lk \
+    odm \
+    odm_dlkm \
+    product \
     system \
     system_ext \
-    product \
-    vendor \
-    odm \
-    vbmeta \
     vbmeta_system \
-    vbmeta_vendor
+    vbmeta_vendor \
+    vendor \
+    vendor_boot \
+    vendor_dlkm
 
 # Update engine
 PRODUCT_PACKAGES += \
