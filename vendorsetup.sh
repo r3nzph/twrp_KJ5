@@ -42,7 +42,8 @@ if [ -f "$(gettop)/bootable/recovery/orangefox.cpp" ]
 then
 	echo -e "\x1b[96mSetting up OrangeFox build vars...\x1b[m"
 	if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
-		export OF_DISABLE_OTA_MENU=1
+export LC_ALL=C
+export OF_DISABLE_OTA_MENU=1
 export FOX_AB_DEVICE=1
 export FOX_VIRTUAL_AB_DEVICE=1
 export OF_DEFAULT_KEYMASTER_VERSION=4.1
