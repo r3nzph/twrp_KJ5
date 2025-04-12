@@ -1,1 +1,1 @@
-# twrp_KJ5
+# ofox-device_tecno_TECNO-KJ5
