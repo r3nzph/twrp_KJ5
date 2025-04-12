@@ -40,7 +40,6 @@ BOARD_KERNEL_SEPARATED_DTBO := true
 TARGET_NO_KERNEL := true
 BOARD_RAMDISK_USE_LZ4 := true
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
-VENDOR_CMDLINE += androidboot.selinux=permissive androidboot.init_fatal_reboot_target=recovery
 
 BOARD_BOOT_HEADER_VERSION := 4
 BOARD_KERNEL_BASE := 0x40078000
