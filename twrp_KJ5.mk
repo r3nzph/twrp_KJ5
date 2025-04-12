@@ -21,9 +21,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
 # Inherit from KJ5 device
 $(call inherit-product, device/tecno/KJ5/device.mk)
 
-# Inherit some common TWRP stuff.
-$(call inherit-product, vendor/twrp/config/device.mk)
-
 PRODUCT_DEVICE := KJ5
 PRODUCT_NAME := twrp_KJ5
 PRODUCT_BRAND := TECNO
