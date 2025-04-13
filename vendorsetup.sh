@@ -35,6 +35,7 @@ fi
 
 if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_VARIANT="A14"
+        export OF_DISABLE_TWRP_COMPATIBILITY_MODE := true
 	export OF_USE_GREEN_LED=0
     export FOX_ENABLE_APP_MANAGER=1
     export OF_IGNORE_LOGICAL_MOUNT_ERRORS=1
