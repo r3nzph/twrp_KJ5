@@ -11,9 +11,6 @@ ro.sys.usb.storage.type=mtp
 persist.sys.usb.config=adb,mtp
 sys.usb.config=adb,mtp
 
-# Crypto
-ro.crypto.volume.filenames_mode=aes-256-cts
-
 # Gatekeeper
 ro.hardware.gatekeeper=trustonic
 
