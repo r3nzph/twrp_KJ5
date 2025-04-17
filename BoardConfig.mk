@@ -139,21 +139,30 @@ TW_INCLUDE_REPACKTOOLS := true
 TW_INCLUDE_RESETPROP := true
 TW_INCLUDE_LPTOOLS := true
 TW_INCLUDE_LIBRESETPROP := true
+TWRP_EVENT_LOGGING := true
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 TARGET_USES_MKE2FS := true
+TW_USE_TOOLBOX := true
 
 # Haptic
 TW_SUPPORT_INPUT_AIDL_HAPTICS :=true
 TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "IVibrator/vibratorfeature"
 
 # TWRP Configuration
-TW_EXTRA_LANGUAGES := true
+TW_BACKUP_EXCLUSIONS := /Files/fonts
+TW_EXTRA_LANGUAGES := false
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_EXCLUDE_APEX := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := "roboto_15x24.h"
 TW_EXCLUDE_LPDUMP := true
+TW_EXCLUDE_SUPERSU := true
+TW_EXCLUDE_BASH := true
+TW_EXCLUDE_TZDATA := true
+TW_EXCLUDE_PYTHON := true
+TW_EXCLUDE_NANO := true
+TW_EXCLUDE_TWRPAPP := true
 
 # Brightness Screen
 TW_NO_SCREEN_BLANK := true
@@ -164,11 +173,14 @@ TW_DEFAULT_BRIGHTNESS := 150
 # USB Configuration
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.usb0/lun.%d/file
+
+# MTP
 TW_HAS_MTP := true
+TW_MTP_DEVICE := /dev/mtp_usb
 
 # Storage
 RECOVERY_SDCARD_ON_DATA := true
-TW_USB_STORAGE := true
+TW_USE_EXTERNAL_STORAGE := true
 
 # Props
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
