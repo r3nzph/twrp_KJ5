@@ -3,9 +3,8 @@ import /init.recovery.trustonic.rc
 # Modules
 on early-init
     # Load touch-related modules
-    insmod /vendor/lib/modules/chipone9916.ko
-    insmod /vendor/lib/modules/ilitek.ko
-    insmod /vendor/lib/modules/omnivision_tcm.ko
+    insmod /vendor/lib/modules/chipone_icnl99xx.ko
+    insmod /vendor/lib/modules/omnivision_td4160.ko
 
 on init
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw:/system/lib64/hw
