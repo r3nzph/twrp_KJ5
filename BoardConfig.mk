@@ -41,7 +41,7 @@ TARGET_NO_KERNEL := true
 # Specify prebuilt kernel and DTB
 BOARD_RAMDISK_USE_LZ4 := true
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
-TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
+TARGET_PREBUILT_DTB := device/tecno/KJ5/prebuilt/dtb.img
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 
 # Specify prebuilt DTBO image
