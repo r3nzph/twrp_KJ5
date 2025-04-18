@@ -36,7 +36,7 @@ DEVICE_SCREEN_HEIGHT := 720
 BOARD_KERNEL_SEPARATED_DTBO := true
 
 # Disable kernel build
-TARGET_NO_KERNEL := true
+TARGET_NO_KERNEL := false
 
 # Specify prebuilt kernel and DTB
 BOARD_RAMDISK_USE_LZ4 := true
