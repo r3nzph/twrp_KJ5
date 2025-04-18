@@ -37,6 +37,8 @@ BOARD_KERNEL_SEPARATED_DTBO := true
 
 # Disable kernel build
 TARGET_NO_KERNEL := false
+TARGET_KERNEL_CONFIG := FULL-64_defconfig
+TARGET_KERNEL_SOURCE := kernel/tecno/FULL-64
 
 # Specify prebuilt kernel and DTB
 BOARD_RAMDISK_USE_LZ4 := true
