@@ -39,6 +39,8 @@ BOARD_KERNEL_SEPARATED_DTBO := true
 TARGET_NO_KERNEL := true
 BOARD_RAMDISK_USE_LZ4 := true
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
+TARGET_KERNEL_CONFIG := KJ5_defconfig
+TARGET_KERNEL_SOURCE := kernel/tecno/KJ5
 
 BOARD_BOOT_HEADER_VERSION := 4
 BOARD_KERNEL_BASE := 0x40078000
@@ -130,6 +132,9 @@ BOOT_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 # TW_INCLUDE_CRYPTO_FBE := true
 # TW_USE_FSCRYPT_POLICY := 2
 # TW_INCLUDE_FBE_METADATA_DECRYPT := true
+
+# Modules
+TW_LOAD_VENDOR_BOOT_MODULES := 8250_mtk.ko Upower.ko adapter_class.ko adaptive-ts.ko aee_aed.ko aee_hangdet.ko aee_rs.ko arm_dsu_pmu.ko blocktag.ko bootprof.ko cfg80211.ko charger_class.ko chipone_icnl99xx.ko clk-common.ko clk-disable-unused.ko clk-fmeter-mt6768.ko clk-mt6768-pg.ko clk-mt6768.ko clkbuf.ko clkchk-mt6768.ko clkdbg-mt6768.ko cmdq-platform-mt6768.ko cmdq_helper_inf.ko cpufreq_sugov_ext.ko cqhci.ko device-apc-common-legacy.ko device-apc-mt6768.ko dvfsrc-opp-mt6768.ko emicen.ko emiisu.ko emimpu.ko extcon-mtk-usb.ko extdev_io_class.ko fair.ko ged.ko gpapi.ko i2c-mt65xx.ko icnl9916c_hdp_dsi_vdo_boe_boe_kj5.ko icnl9916c_hdp_dsi_vdo_tm_tm_kj5.ko iommu_debug.ko iommu_secure.ko irq-dbg.ko isee.ko leds-mtk-disp.ko leds-mtk-pwm.ko leds-mtk.ko load_track.ko log_store.ko lzo-rle.ko lzo.ko mac80211.ko mcDrvModule.ko mediatek-drm.ko mediatek_static_power.ko memory-amms.ko meta.ko mmprofile.ko mmqos-common.ko mmqos-mt6768.ko modules.alias modules.dep modules.load modules.load.recovery modules.softdep monitor_hang.ko mrdump.ko mt6358-accdet.ko mt6358-regulator.ko mt6358_battery.ko mt635x-auxadc.ko mt6397.ko mt6577_auxadc.ko mt6768_clkmgr.ko mtk-cmdq-drv-ext.ko mtk-cqdma.ko mtk-dvfsrc-helper.ko mtk-dvfsrc-regulator.ko mtk-dvfsrc.ko mtk-emi.ko mtk-icc-core.ko mtk-kpd.ko mtk-mbox.ko mtk-mmc-autok.ko mtk-mmc-dbg.ko mtk-mmc-mod.ko mtk-mmdvfs-debug.ko mtk-mmdvfs.ko mtk-mml-legacy.ko mtk-pm-domain-disable-unused.ko mtk-pmic-keys.ko mtk-pmic-wrap.ko mtk-scpsys-bringup.ko mtk-scpsys-mt6768.ko mtk-scpsys.ko mtk-smi-bwc.ko mtk-smi-dbg.ko mtk-smi.ko mtk-socinfo.ko mtk-uart-apdma.ko mtk_battery_oc_throttling.ko mtk_bp_thl.ko mtk_charger_algorithm_class.ko mtk_charger_framework.ko mtk_chg_type_det.ko mtk_cm_mgr.ko mtk_cm_mgr_mt6768.ko mtk_core_ctl.ko mtk_cpuhp.ko mtk_cpuidle.ko mtk_disp_notify.ko mtk_dramc.ko mtk_dynamic_loading_throttling.ko mtk_gpu_hal.ko mtk_gpufreq_mt6768.ko mtk_gpufreq_wrapper.ko mtk_iommu.ko mtk_low_battery_throttling.ko mtk_mdpm_v1.ko mtk_mm_heap.ko mtk_panel_ext.ko mtk_pbm.ko mtk_pd_adapter.ko mtk_pd_charging.ko mtk_pep.ko mtk_pep20.ko mtk_perf_ioctl.ko mtk_printk_ctrl.ko mtk_rpmsg_mbox.ko mtk_sync.ko mtk_tinysys_ipi.ko mtk_tran_hvdcp20.ko mtk_tran_tc30.ko mtk_wdt.ko musb_hdrc.ko musb_main.ko nfc_i2c_tms.ko nvmem_mtk-devinfo.ko omnivision_td4160.ko opsMediator.ko pd-chk-mt6768.ko pd_dbg_info.ko phy-generic.ko phy-mtk-tphy.ko pinctrl-mt6768.ko pinctrl-mtk-common-v2_debug.ko pinctrl-mtk-v2.ko pmic_lbat_service.ko pmic_lvsys_notify.ko pwm-mtk-disp.ko reboot-mode.ko regulator-vibrator.ko reset-ti-syscon.ko rpmb-mtk.ko rpmb.ko rt_pd_manager.ko rtc-mt6397.ko scheduler.ko sd_tray.ko sec-rng.ko sec.ko sgm41516d.ko spi-mt65xx.ko spi_slave.ko sspm_v1.ko syscon-reboot-mode.ko system_heap.ko tcpc_class.ko tcpc_rt1711h.ko tcpci_late_sync.ko td4160_hdp_dsi_vdo_hx_hx_kj5.ko td4160_hdp_dsi_vdo_lce_hkc_kj5.ko teeperf.ko thermal_interface.ko tkv.ko tkv_recovery.ko tms_device_modules.ko tnek.ko tran-proc-bootdevice-mod.ko tran_auto_test.ko tran_battery_aging.ko tran_chg.ko tran_common_class.ko tran_drm_panel_i2c.ko tran_fp.ko tran_otg.ko tran_rhi.ko transsion_tranlog.ko uload_ind.ko zram.ko zsmalloc.ko
 
 # Tools
 TW_INCLUDE_FB2PNG := true
