@@ -11,9 +11,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 # Enable project quotas and casefolding for emulated storage without sdcardfs
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
-# Enable Virtual A/B OTA
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
-
 # Inherit from KJ5 device
 $(call inherit-product, device/tecno/KJ5/device.mk)
 
