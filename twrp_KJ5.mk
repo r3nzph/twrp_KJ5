@@ -21,11 +21,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
 # Inherit from KJ5 device
 $(call inherit-product, device/tecno/KJ5/device.mk)
 
-PRODUCT_DEVICE := KJ5
+PRODUCT_DEVICE := TECNO-KJ5
 PRODUCT_NAME := twrp_KJ5
 PRODUCT_BRAND := TECNO
 PRODUCT_MODEL := TECNO KJ5
-PRODUCT_MANUFACTURER := tecno
+PRODUCT_MANUFACTURER := TECNO
 
-PRODUCT_GMS_CLIENTID_BASE := android-tecno
+PRODUCT_GMS_CLIENTID_BASE := android-transsion
 
