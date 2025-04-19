@@ -10,6 +10,7 @@ ro.debuggable=1
 ro.sys.usb.storage.type=mtp
 persist.sys.usb.config=adb,mtp
 sys.usb.config=adb,mtp
+persist.sys.isUsbOtgEnabled=true
 
 # Gatekeeper
 ro.hardware.gatekeeper=trustonic
