@@ -1,6 +1,10 @@
 # Device Path
 DEVICE_PATH := device/tecno/KJ5
 
+TARGET_RECOVERY_DEVICE_DIRS := \
+    $(COMMON_PATH) \
+    $(DEVICE_PATH)
+
 # Architecture Settings
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -13,6 +17,11 @@ TARGET_2ND_ARCH_VARIANT := armv7-a-neon
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_VARIANT := generic
 TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a53
+
+#64bit
+TARGET_SUPPORTS_64_BIT_APPS := true
+TARGET_IS_64_BIT := true
+TARGET_USES_64_BIT_BINDER := true
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_TECNO-KJ5
