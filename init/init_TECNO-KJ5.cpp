@@ -26,7 +26,7 @@ void vendor_load_properties()
     {
         property_override(string("ro.product.") + prop + string("brand"), "TECNO");
         property_override(string("ro.product.") + prop + string("name"), "KJ5-OP");
-        property_override(string("ro.product.") + prop + string("device"), "TECNO-KJ5");
+        property_override(string("ro.product.") + prop + string("device"), "KJ5");
         property_override(string("ro.product.") + prop + string("model"), "TECNO KJ5");
         property_override(string("ro.product.") + prop + string("marketname"), "TECNO SPARK 20");
         property_override(string("ro.product.system.") + prop + string("device"), "TECNO SPARK 20");
