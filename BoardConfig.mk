@@ -1,5 +1,5 @@
 # Device Path
-DEVICE_PATH := device/tecno/TECNO-KJ5
+DEVICE_PATH := device/tecno/KJ5
 
 # Architecture Settings
 TARGET_ARCH := arm64
