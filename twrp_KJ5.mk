@@ -19,7 +19,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_ven
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
 
 # Inherit from KJ5 device
-$(call inherit-product, device/tecno/KJ5/device.mk)
+$(call inherit-product, device/tecno/TECNO-KJ5/device.mk)
 
 PRODUCT_DEVICE := TECNO-KJ5
 PRODUCT_NAME := twrp_KJ5
