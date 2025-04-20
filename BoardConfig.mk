@@ -91,7 +91,7 @@ include device/tecno/KJ5/partitions.mk
 
 # vendor_boot
 ifeq ($(BOARD_STORE_RAMDISK_IN_VENDORBOOT),true)
-include device/tecno/KJ5/target/vendor_boot.mk
+include device/tecno/KJ5/vendor_boot.mk
 endif
 
 # Props
