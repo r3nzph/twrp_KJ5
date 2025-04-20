@@ -21,6 +21,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
 
+# dynamic
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
 # Inherit from KJ5 device
 $(call inherit-product, device/tecno/KJ5/device.mk)
 
