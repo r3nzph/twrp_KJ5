@@ -1,4 +1,6 @@
-        export FOX_VARIANT="A13+"
+#!/bin/bash
+
+	export FOX_VARIANT="A13+"
         export OF_DISABLE_TWRP_COMPATIBILITY_MODE := true
         export OF_DEFAULT_KEYMASTER_VERSION=4.1
     export FOX_ENABLE_APP_MANAGER=1
