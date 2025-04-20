@@ -203,5 +203,5 @@ TW_CUSTOM_BATTERY_POS := "790"
 # Hack depends
 ALLOW_MISSING_DEPENDENCIES := true
 
-# Device 
-TW_DEVICE_VERSION := SPARK 20 by r3nzph
+# Version
+TW_DEVICE_VERSION := r3nzph | KJ5
