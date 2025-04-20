@@ -51,7 +51,7 @@
 	export OF_UNBIND_SDCARD_F2FS=1
 
 	# instruct magiskboot v24+ to always patch the vbmeta header when patching the recovery/boot image; do *not* remove!
-        export OF_PATCH_VBMETA_FLAG="1"
+        export FOX_PATCH_VBMETA_FLAG=1
 
 	# no special MIUI stuff
         export OF_VANILLA_BUILD=1
