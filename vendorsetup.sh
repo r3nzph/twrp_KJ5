@@ -54,7 +54,7 @@
         export FOX_PATCH_VBMETA_FLAG=1
 
 	# no special MIUI stuff
-        export OF_VANILLA_BUILD=1
+        export FOX_VANILLA_BUILD=1
 
 
 	# full size
