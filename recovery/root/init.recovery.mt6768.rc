@@ -1,19 +1,5 @@
 import /init.recovery.trustonic.rc
 
-# Modules
-on early-init
-    # Load touch-related modules
-    insmod /vendor/lib/modules/chipone_icnl99xx.ko
-    insmod /vendor/lib/modules/omnivision_td4160.ko
-    insmod /vendor/lib/modules/chipone_ts_fw_01.bin
-    insmod /vendor/lib/modules/fs1599.fsm
-    insmod /vendor/lib/modules/fs1801.fsm
-    insmod /vendor/lib/modules/gt1151_default_firmware2.img
-    insmod /vendor/lib/modules/hdl_firmware.img
-    insmod /vendor/lib/modules/mt6631_fm_v1_coeff.bin
-    insmod /vendor/lib/modules/mt6631_fm_v1_patch.bin
-    insmod /vendor/lib/modules/chipone_ts_fw.bin
-
 on init
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw:/system/lib64/hw
 
