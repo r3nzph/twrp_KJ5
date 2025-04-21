@@ -90,9 +90,7 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 include device/tecno/KJ5/partitions.mk
 
 # vendor_boot
-ifeq ($(BOARD_STORE_RAMDISK_IN_VENDORBOOT),true)
 include device/tecno/KJ5/vendor_boot.mk
-endif
 
 # Props
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
