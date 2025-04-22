@@ -1,6 +1,5 @@
 #!/bin/bash
 
-	export FOX_VARIANT="A13+"
         export OF_DISABLE_TWRP_COMPATIBILITY_MODE := true
         export FOX_ENABLE_APP_MANAGER=1
         export OF_IGNORE_LOGICAL_MOUNT_ERRORS=1
