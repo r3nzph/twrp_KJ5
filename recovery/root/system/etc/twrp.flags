@@ -35,15 +35,11 @@
 /tee1			emmc		/dev/block/by-name/tee1											flags=display=tee1
 /tee2			emmc		/dev/block/by-name/tee2											flags=display=tee2
 
-# Super
-/super    emmc     /dev/block/by-name/super                   flags=display=super;slotselect;backup;flashimg
-
 # Removable Storage
 /external_sd    auto    /dev/block/mmcblk1p1        /dev/block/mmcblk0p1          flags=display="Micro SD Card";storage;wipeingui;removable;backup=0
 /usb_otg    auto    /dev/block/sda1          /dev/block/sda    /dev/block/sdd1      flags=display="USB-OTG";storage;wipeingui;removable;backup=0
 
 # Flashable logical partitions
-/super          emmc     /dev/block/bootdevice/by-name/super            flags=display="Super Image";backup;flashimg
 /system_image		emmc		/dev/block/bootdevice/by-name/system									flags=backup;flashimg
 /vendor_image		emmc		/dev/block/bootdevice/by-name/vendor									flags=backup;flashimg
 /system_ext_image	emmc		/dev/block/bootdevice/by-name/system_ext								flags=display="System_EXT Image";backup;flashimg
