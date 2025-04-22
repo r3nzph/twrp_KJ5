@@ -16,47 +16,31 @@ AB_OTA_PARTITIONS += \
     vendor_boot \
     vendor_dlkm
 
-# Update engine
+# A/B
 PRODUCT_PACKAGES += \
-    checkpoint_gc \
-    update_engine \
-    update_engine_sideload \
-    update_verifier
+    otapreopt_script
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/mtk_plpath_utils \
+    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
 
-PRODUCT_PACKAGES += \
-    bootctrl.mt6768
+PRODUCT_PACKAGES_DEBUG += \
+    bootctrl \
+    update_engine_client
 
-# Boot control HAL
+# Bootctrl
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-mtkimpl \
     android.hardware.boot@1.2-mtkimpl.recovery
 
-PRODUCT_PACKAGES_DEBUG += \
-    bootctrl
-
-# Health
+# Keystore2
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-service
+    android.system.keystore2
 
-# Build MT-PL-Utils
+# Update Engine
 PRODUCT_PACKAGES += \
-    mtk_plpath_utils \
-    mtk_plpath_utils.recovery
-
-# Keymaster
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.1
-
-# Additional target Libraries
-TARGET_RECOVERY_DEVICE_MODULES += \
-    android.hardware.keymaster@4.1
-
-TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.1.so
+    update_engine \
+    update_engine_sideload \
+    update_verifier
