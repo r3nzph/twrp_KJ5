@@ -179,6 +179,8 @@ TW_DEFAULT_BRIGHTNESS := 1200
 
 # USB Configuration
 TW_EXCLUDE_DEFAULT_USB_INIT := true
+TW_USES_OTG_USB := true
+TW_NO_USB_STORAGE := true
 
 # MTP
 TW_HAS_MTP := true
