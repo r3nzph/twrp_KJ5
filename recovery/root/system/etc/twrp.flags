@@ -9,6 +9,8 @@
 /vbmeta			emmc		/dev/block/by-name/vbmeta										flags=display=vbmeta;slotselect;backup;flashimg
 /vbmeta_system		emmc		/dev/block/by-name/vbmeta_system									flags=display=vbmeta_system;slotselect;backup;flashimg
 /vbmeta_vendor		emmc		/dev/block/by-name/vbmeta_vendor									flags=display=vbmeta_vendor;slotselect;backup;flashimg
+/system           emmc      /dev/block/by-name/system                       flags=backup=1;flashimg=1;slotselect;backup;display="System Image"
+/product          emmc       /dev/block/by-name/product                     flags=backup=1;flashimg=1;slotselect;backup;display="Product Image"
 
 # Firmware
 /dtbo			emmc		/dev/block/by-name/dtbo											flags=display=dtbo;slotselect;backup
@@ -40,8 +42,9 @@
 /usb_otg    auto    /dev/block/sda1          /dev/block/sda    /dev/block/sdd1      flags=display="USB-OTG";storage;wipeingui;removable;backup=0
 
 # Flashable logical partitions                        
+# Flashable logical partitions
+/system_image		emmc		/dev/block/bootdevice/by-name/system									flags=backup;flashimg
 /vendor_image		emmc		/dev/block/bootdevice/by-name/vendor									flags=backup;flashimg
 /system_ext_image	emmc		/dev/block/bootdevice/by-name/system_ext								flags=display="System_EXT Image";backup;flashimg
+/product_image		emmc		/dev/block/bootdevice/by-name/product									flags=display="Product Image";backup;flashimg
 /vendor_dlkm_image	emmc		/dev/block/bootdevice/by-name/vendor_dlkm								flags=display="VendorDLKM Image";backup;flashimg
-/system         ext4       /dev/block/mapper/by-name                               flags=backup=1;flashimg=1;slotselect;display="System Image"
-/product        ext4       /dev/block/mapper/by-name                                flags=backup=1;flashimg=1;slotselect;display="Product Image"
