@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export OF_DISABLE_TWRP_COMPATIBILITY_MODE := true
 export OF_DISABLE_OTA_MENU=1
 export FOX_AB_DEVICE=1
 export FOX_VIRTUAL_AB_DEVICE=1
