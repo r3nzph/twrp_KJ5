@@ -17,7 +17,6 @@ RECOVERY_SDCARD_ON_DATA := true
 TW_USE_EXTERNAL_STORAGE := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.usb0/lun.%d/file
-TW_LOAD_VENDOR_MODULES := true
 TW_FORCE_KEYMASTER_VER := true
 TW_NO_SCREEN_BLANK := true
 
