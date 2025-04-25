@@ -48,3 +48,5 @@
 /product             ext4      /dev/block/mapper/product
 /system_ext_image     emmc   /dev/block/mapper/system_ext              flags=backup=1;flashimg=1;display="System_ext";wipeingui;slotselect
 /system_ext            ext4      /dev/block/mapper/system_ext
+/super_image        emmc     /dev/block/by-name/super            flags=display="Super Image";backup=1;flashimg=1;wipeingui;slotselect
+/super            emmc     /dev/block/platform/bootdevice/by-name/super            flags=backup=1;display="Super_image";flashimg=1;wipeingui
