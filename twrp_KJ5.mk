@@ -18,6 +18,9 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 # Inherit from KJ5 device
 $(call inherit-product, device/tecno/KJ5/device.mk)
 
+# Dynamic Partitions
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
 PRODUCT_DEVICE := KJ5
 PRODUCT_NAME := twrp_KJ5
 PRODUCT_BRAND := TECNO
