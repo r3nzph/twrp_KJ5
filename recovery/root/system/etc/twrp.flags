@@ -8,9 +8,7 @@
 /vendor_boot		emmc		/dev/block/by-name/vendor_boot										flags=display=vendor_boot;slotselect;backup;flashimg
 /vbmeta			emmc		/dev/block/by-name/vbmeta										flags=display=vbmeta;slotselect;backup;flashimg
 /vbmeta_system		emmc		/dev/block/by-name/vbmeta_system									flags=display=vbmeta_system;slotselect;backup;flashimg
-/vbmeta_vendor		emmc		/dev/block/by-name/vbmeta_vendor									flags=display=vbmeta_vendor;slotselect;backup;flashimg
-/system           emmc      /dev/block/by-name/system                       flags=backup=1;flashimg=1;slotselect;backup;display="System Image"
-/product          emmc       /dev/block/by-name/product                     flags=backup=1;flashimg=1;slotselect;backup;display="Product Image"
+/vbmeta_vendor		emmc		/dev/block/by-name/vbmeta_vendor									flags=display=vbmeta_vendor;slotselect;backup;flashimg                                              wait,slotselect,avb,logical,first_stage_mount
 
 # Firmware
 /dtbo			emmc		/dev/block/by-name/dtbo											flags=display=dtbo;slotselect;backup
@@ -40,11 +38,13 @@
 # Removable Storage
 /external_sd    auto    /dev/block/mmcblk1p1        /dev/block/mmcblk0p1          flags=display="Micro SD Card";storage;wipeingui;removable;backup=0
 /usb_otg    auto    /dev/block/sda1          /dev/block/sda    /dev/block/sdd1      flags=display="USB-OTG";storage;wipeingui;removable;backup=0
-
-# Flashable logical partitions                        
+                        
 # Flashable logical partitions
-/system_image		emmc		/dev/block/bootdevice/by-name/system									flags=backup;flashimg
-/vendor_image		emmc		/dev/block/bootdevice/by-name/vendor									flags=backup;flashimg
-/system_ext_image	emmc		/dev/block/bootdevice/by-name/system_ext								flags=display="System_EXT Image";backup;flashimg
-/product_image		emmc		/dev/block/bootdevice/by-name/product									flags=display="Product Image";backup;flashimg
-/vendor_dlkm_image	emmc		/dev/block/bootdevice/by-name/vendor_dlkm								flags=display="VendorDLKM Image";backup;flashimg
+/system_image     emmc   /dev/block/mapper/system                flags=backup=1;flashimg=1;display="System";wipeingui;slotselect
+/system            ext4      /dev/block/mapper/system 
+/vendor_image     emmc   /dev/block/mapper/vendor                flags=backup=1;flashimg=1;display="Vendor";wipeingui;slotselect
+/vendor              ext4      /dev/block/mapper/vendor 
+/product_image     emmc   /dev/block/mapper/product               flags=backup=1;flashimg=1;display="Product";wipeingui;slotselect
+/product             ext4      /dev/block/mapper/product
+/system_ext_image     emmc   /dev/block/mapper/system_ext              flags=backup=1;flashimg=1;display="System_ext";wipeingui;slotselect
+/system_ext            ext4      /dev/block/mapper/system_ext
