@@ -35,6 +35,11 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-mtkimpl \
     android.hardware.boot@1.2-mtkimpl.recovery
 
+# Fastbootd
+PRODUCT_PACKAGES += \
+    fastbootd \
+    android.hardware.fastboot@1.0-impl-mock
+
 # Keystore2
 PRODUCT_PACKAGES += \
     android.system.keystore2
