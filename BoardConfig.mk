@@ -162,6 +162,7 @@ TW_EXCLUDE_APEX := true
 TW_EXCLUDE_TZDATA := true
 TW_EXCLUDE_PYTHON := true
 TW_EXCLUDE_TWRPAPP := true
+TW_PREPARE_MEDIA_EARLY  := true
 
 # Brightness Screen
 TW_NO_SCREEN_BLANK := true
