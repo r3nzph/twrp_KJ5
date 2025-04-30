@@ -1,13 +1,6 @@
 import /init.decrypt.rc
 import /vibrator-penangf.rc
 
-# Modules
-on early-init
-    # Load touch-related modules
-    insmod /vendor/lib/modules/chipone9916.ko
-    insmod /vendor/lib/modules/ilitek.ko
-    insmod /vendor/lib/modules/omnivision_tcm.ko
-
 on post-fs 
     start boot-hal-1-2
 
